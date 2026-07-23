@@ -1,9 +1,6 @@
-cd ~/projects/cloud-pipeline
+# ☁️ Cloud Data Pipeline
 
-python3 -c "
-content = '''# ☁️ Cloud Data Pipeline
-
-> FastAPI job-tracking service with Azure Blob Storage integration — a cloud-native portfolio project.
+&gt; FastAPI job-tracking service with Azure Blob Storage integration — a cloud-native portfolio project.
 
 ## 🚀 What It Does
 
@@ -22,7 +19,7 @@ content = '''# ☁️ Cloud Data Pipeline
 
 ## ⚡ Quick Start
 
-\`\`\`bash
+```bash
 # Clone
 git clone https://github.com/lonyoriconsulting-maker/cloud-data-pipeline.git
 cd cloud-data-pipeline
@@ -32,68 +29,54 @@ docker compose up --build
 
 # Test
 curl http://localhost:8000/health
-\`\`\`
 
 ## 📡 API Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| \`/jobs\` | POST | Create a new job |
-| \`/jobs\` | GET | List all jobs |
-| \`/jobs/{id}\` | GET | Get job details |
-| \`/jobs/{id}/status\` | PATCH | Update job status |
-| \`/jobs/{id}/upload\` | POST | Upload file to job |
-| \`/jobs/{id}/files\` | GET | List job files |
-| \`/jobs/{id}/files/{name}\` | GET | Download file |
-| \`/docs\` | GET | Swagger UI |
+| Endpoint                  | Method | Description        |
+| ------------------------- | ------ | ------------------ |
+| `/jobs`                   | POST   | Create a new job   |
+| `/jobs`                   | GET    | List all jobs      |
+| `/jobs/{id}`              | GET    | Get job details    |
+| `/jobs/{id}/status`       | PATCH  | Update job status  |
+| `/jobs/{id}/upload`       | POST   | Upload file to job |
+| `/jobs/{id}/files`        | GET    | List job files     |
+| `/jobs/{id}/files/{name}` | GET    | Download file      |
+| `/docs`                   | GET    | Swagger UI         |
 
 ## 🏗️ Architecture
 
-\`\`\`
 ┌─────────────┐     HTTP      ┌─────────────┐     Blob API     ┌─────────────┐
 │   Client    │ ─────────────→│  FastAPI    │ ───────────────→│   Azurite   │
 │  (curl/     │               │   Service   │                  │  (Emulator) │
 │   browser)  │ ←─────────────│   :8000     │ ←───────────────│   :10000    │
 └─────────────┘               └─────────────┘                  └─────────────┘
-\`\`\`
 
 ## 📁 Blob Organization
 
-Files are stored with job-scoped prefixes:
-
-\`\`\`
 job-files/
 ├── 095b0b32/
 │   └── test-data.csv
 ├── a1b2c3d4/
 │   └── report.pdf
-\`\`\`
 
 ## 🧪 Verified With
 
-- ✅ \`curl\` API testing
-- ✅ Azure Storage Explorer (local emulator connection)
-- ✅ Docker Compose health checks
+✅ curl API testing
+✅ Azure Storage Explorer (local emulator connection)
+✅ Docker Compose health checks
 
 ## 🗺️ Roadmap
 
-- [x] FastAPI + Azurite integration
-- [ ] PostgreSQL persistence layer
-- [ ] Async background jobs (Celery + Redis)
-- [ ] Deploy to Azure Container Apps
-- [ ] CI/CD with GitHub Actions
+[x] FastAPI + Azurite integration
+[ ] PostgreSQL persistence layer
+[ ] Async background jobs (Celery + Redis)
+[ ] Deploy to Azure Container Apps
+[ ] CI/CD with GitHub Actions
 
 ## 📸 Screenshot
 
-![Azure Storage Explorer showing uploaded blobs](assets/storage-explorer.png)
+![Azure Storage Explorer showing uploaded blobs]assets/storage-explorer.png
 
 ---
 
-**Built by [lonyoriconsulting-maker](https://github.com/lonyoriconsulting-maker)**
-'''
-
-with open('README.md', 'w') as f:
-    f.write(content)
-
-print('README.md written successfully')
-"
+**Built by [lonyoriconsulting-maker](https://github.com/lonyoriconsulting-maker)
